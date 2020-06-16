@@ -1,24 +1,16 @@
-# README
+## hakodate-sweets-API-tutorial
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+初めてRails触るけれど，公式のRailsチュートリアルは重そうだったので作成してみました．  
+始めるときは．このリポジトリーをフォークして自分のところに置いて作業を追加してみてください．  
+開始時点の環境は，hakodate-sweets-APIの環境とほぼほぼ揃えておいてあります．  
+なので作業するときには，Docker, docker-composeを準備してください．  
 
-Things you may want to cover:
+このリポジトリーをクローンしてきて，  
+```sh
+$ docker-compose up -d
+```
+するといくつかのコンテナが立ち上がります．  
+http://localhost:10000  
+に完成しているAPIを叩くことができるSwaggerが立ち上がります．
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+すべてのAPIを叩くことができるようになるまで書けるようになったら，hakodate-sweets-APIの方もおそらく書けるようになっていると思われます．
