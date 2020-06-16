@@ -13,4 +13,5 @@ $ docker-compose up -d
 http://localhost:10000  
 に完成しているAPIを叩くことができるSwaggerが立ち上がります．
 
-すべてのAPIを叩くことができるようになるまで書けるようになったら，hakodate-sweets-APIの方もおそらく書けるようになっていると思われます．
+すべてのAPIを叩くことができるようになるまで書けるようになったら，  
+hakodate-sweets-APIの方もおそらく書けるようになっていると思われます．
