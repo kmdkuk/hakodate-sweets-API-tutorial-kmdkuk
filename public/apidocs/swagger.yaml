@@ -1,0 +1,433 @@
+openapi: 3.0.0
+info:
+  description: "Hakodate Sweets API"
+  version: "1.0.0"
+  title: "Swagger for Hakodate Sweets API"
+  contact:
+    email: "g2119012@fun.ac.jp"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+servers:
+  - url: http://localhost:3000/
+    description: 開発用
+tags:
+  - name: "Sweets"
+    description: "Sweets"
+  - name: "Shops"
+    description: "Shops"
+  - name: "Categories"
+    description: "Categories"
+paths:
+  /sweets:
+    get:
+      tags:
+        - "Sweets"
+      summary: "Get all sweets"
+      description: ""
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Sweets"
+  /sweets/{ID}:
+    get:
+      tags:
+        - "Sweets"
+      summary: "Get sweet"
+      description: ""
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          type:
+            $ref: "#/components/schemas/id"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Sweet"
+    put:
+      tags:
+        - "Sweets"
+      summary: "Update sweet"
+      description: ""
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          type:
+            $ref: "#/components/schemas/id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Sweet"
+        required: true;
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Sweet"
+    delete:
+      tags:
+        - "Sweets"
+      summary: "Delete sweet"
+      description: ""
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          type:
+            $ref: "#/components/schemas/id"
+      responses:
+        200:
+          description: OK
+  /shops:
+    get:
+      tags:
+        - "Shops"
+      summary: "Get all shops"
+      description: ""
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Shops"
+    post:
+      tags:
+        - "Shops"
+      summary: "Create new shop"
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Shop"
+        required: true;
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Shop"
+  /shops/{ID}:
+    get:
+      tags:
+        - "Shops"
+      summary: "Get Shop"
+      description: ""
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          type:
+            $ref: "#/components/schemas/id"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Shop"
+    put:
+      tags:
+        - "Shops"
+      summary: "Edit Shop"
+      description: ""
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          type:
+            $ref: "#/components/schemas/id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Shop"
+        required: true;
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Shop"
+    delete:
+      tags:
+        - "Shops"
+      summary: "Delete shop"
+      description: ""
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          type:
+            $ref: "#/components/schemas/id"
+      responses:
+        200:
+          description: OK
+  /shops/{ID}/sweets:
+    get:
+      tags:
+        - "Shops"
+      summary: "Get shop's sweets"
+      description: ""
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          type:
+            $ref: "#/components/schemas/id"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Sweets"
+    post:
+      tags:
+        - "Shops"
+      summary: "Create shop's sweets"
+      description: ""
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          type:
+            $ref: "#/components/schemas/id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostSweet"
+        required: true;
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Sweet"
+  /categories:
+    get:
+      tags:
+        - "Categories"
+      summary: "Get all large categories"
+      description: ""
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LargeCategories"
+    post:
+      tags:
+        - "Categories"
+      summary: "Create new category"
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+        required: true;
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+  /categories/{ID}:
+    get:
+      tags:
+        - "Categories"
+      summary: "Get small categories"
+      description: ""
+      parameters:
+        - name: "LargeCategoryID"
+          in: "path"
+          required: true
+          type:
+            $ref: "#/components/schemas/id"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+    put:
+      tags:
+        - "Categories"
+      summary: "Edit Category"
+      description: ""
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          type:
+            $ref: "#/components/schemas/id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+        required: true;
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+    delete:
+      tags:
+        - "Categories"
+      summary: "Delete Category"
+      description: ""
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          type:
+            $ref: "#/components/schemas/id"
+      responses:
+        200:
+          description: OK
+components:
+  schemas:
+    id:
+      type: "integer"
+      format: "int64"
+      readOnly: true
+    foreign_id:
+      type: "integer"
+      format: "int64"
+    date:
+      type: "string"
+      format: "date-time"
+      readOnly: true
+    PostSweet:
+      type: "object"
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        shop_id:
+          $ref: "#/components/schemas/id"
+        name:
+          type: "string"
+        price:
+          type: "string"
+        description:
+          type: "string"
+        imagePath:
+          type: "string"
+        created_at:
+          $ref: "#/components/schemas/date"
+        updated_at:
+          $ref: "#/components/schemas/date"
+        from_rdf:
+          type: "boolean"
+          readOnly: true
+        small_category_ids:
+          type: array
+          items:
+            $ref: "#/components/schemas/foreign_id"
+    Sweet:
+      type: "object"
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        shop_id:
+          $ref: "#/components/schemas/id"
+        name:
+          type: "string"
+        price:
+          type: "string"
+        description:
+          type: "string"
+        imagePath:
+          type: "string"
+        created_at:
+          $ref: "#/components/schemas/date"
+        updated_at:
+          $ref: "#/components/schemas/date"
+        categories:
+          $ref: "#/components/schemas/Categories"
+
+    Sweets:
+      type: array
+      items:
+        $ref: "#/components/schemas/Sweet"
+    Category:
+      type: "object"
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        name:
+          type: "string"
+        created_at:
+          $ref: "#/components/schemas/date"
+        updated_at:
+          $ref: "#/components/schemas/date"
+    Categories:
+      type: array
+      items:
+        $ref: "#/components/schemas/Category"
+    Shop:
+      type: "object"
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        name:
+          type: "string"
+        description:
+          type: "string"
+        area:
+          type: "string"
+        postcode:
+          type: "string"
+        address:
+          type: "string"
+        openingHoursSpecification:
+          type: "string"
+        closed:
+          type: "string"
+        parking:
+          type: "string"
+        eatin:
+          type: "string"
+        email:
+          type: "string"
+        url:
+          type: "string"
+        latitude:
+          type: "string"
+        longitude:
+          type: "string"
+        telephone:
+          type: "string"
+        imagePath:
+          type: "string"
+        created_at:
+          $ref: "#/components/schemas/date"
+        updated_at:
+          $ref: "#/components/schemas/date"
+    Shops:
+      type: array
+      items:
+        $ref: "#/components/schemas/Shop"
