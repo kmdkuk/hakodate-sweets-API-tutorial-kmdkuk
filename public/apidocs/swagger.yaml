@@ -258,7 +258,7 @@ paths:
       summary: "Get small categories"
       description: ""
       parameters:
-        - name: "LargeCategoryID"
+        - name: "ID"
           in: "path"
           required: true
           type:
